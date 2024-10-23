@@ -238,8 +238,8 @@ void exportMatrix(py::module& m, const char* typestr)
         py::array_t<double> res(shape);
         auto data = res.mutable_data();
         auto k = 0;
-        for(auto j = 0; j < s.cols(); ++j)
-            for(auto i = 0; i < s.rows(); ++i)
+        for(auto i = 0; i < s.rows(); ++i)
+            for(auto j = 0; j < s.cols(); ++j)
                 data[k++] = autodiff::val(s(i, j));
         return res;
     });
