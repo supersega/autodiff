@@ -234,7 +234,7 @@ void exportMatrix(py::module& m, const char* typestr)
     cls.def(py::self != py::self);
 
     cls.def("asarray", [](const Mat& s) {
-        py::tuple shape = py::make_tuple(s.rows(), s.cols());
+        py::array_t<double>::ShapeContainer shape = {s.rows(), s.cols()};
         py::array_t<double> res(shape);
         auto data = res.mutable_data();
         auto k = 0;
